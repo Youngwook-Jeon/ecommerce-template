@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Layout from "@/components/Layout";
 
 import "./css/globals.css";
+import "slick-carousel/slick/slick.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
