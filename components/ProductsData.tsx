@@ -2,6 +2,7 @@
 
 import { ItemProps } from "@/type";
 import Image from "next/image";
+import Link from "next/link";
 import { IoIosStar } from "react-icons/io";
 
 import { calculatePercentage } from "../helpers/index";
@@ -17,23 +18,26 @@ const ProductsData = ({ item }: ItemProps) => {
   return (
     <div className="w-full rounded-lg overflow-hidden">
       <div>
-        <div className="w-full h-96 group overflow-hidden relative">
-          <Image
-            src={item?.image}
-            alt="product image"
-            width={500}
-            height={500}
-            className="w-full h-full object-cover group-hover:scale-110 duration-200 rounded-t-lg"
-          />
-          {item?.isNew && (
-            <span
-              className="absolute top-2 right-2 font-medium text-xs py-1 px-3 rounded-full
+        <Link href={{ pathname: "/product", query: { _id: item?._id } }}>
+          <div className="w-full h-96 group overflow-hidden relative">
+            <Image
+              src={item?.image}
+              alt="product image"
+              width={500}
+              height={500}
+              className="w-full h-full object-cover group-hover:scale-110 duration-200 rounded-t-lg"
+            />
+            {item?.isNew && (
+              <span
+                className="absolute top-2 right-2 font-medium text-xs py-1 px-3 rounded-full
                         group-hover:bg-orange-600 group-hover:text-white bg-white duration-200"
-            >
-              New Arrival
-            </span>
-          )}
-        </div>
+              >
+                New Arrival
+              </span>
+            )}
+          </div>
+        </Link>
+
         <div className="border-[1px] border-slate-300 border-t-0 px-2 py-4 flex flex-col gap-y-2 bg-white rounded-b-lg">
           <p>{item?.title}</p>
           <div className="flex items-center justify-between">
